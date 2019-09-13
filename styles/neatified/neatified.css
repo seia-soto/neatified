@@ -1,0 +1,5 @@
+*, *::after, *::before {
+	-webkit-user-select: auto !important;
+	-webkit-user-drag: auto !important;
+	-webkit-app-region: auto !important;
+}

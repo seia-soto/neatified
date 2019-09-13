@@ -1,0 +1,42 @@
+{
+  "name": "Neatified",
+  "version": "1.0.0",
+  "description": "Blocking scripts which blocking copying context.",
+  "homepage_url": "https://seia.io/",
+  "permissions": [
+    "*://*/*"
+  ],
+  "browser_action": {
+    "default_title": "Neatified",
+    "default_popup": "pages/default_popup.html",
+    "default_icon": {
+      "16": "images/default_icon/16.png",
+      "32": "images/default_icon/32.png",
+      "48": "images/default_icon/48.png",
+      "128": "images/default_icon/128.png"
+    }
+  },
+  "icons": {
+    "16": "images/default_icon/16.png",
+    "32": "images/default_icon/32.png",
+    "48": "images/default_icon/48.png",
+    "128": "images/default_icon/128.png"
+  },
+  "content_scripts": [
+    {
+      "run_at": "document_start",
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "scripts/libs/webextensions-polyfill.js",
+        "scripts/neatified/neatified.js"
+      ],
+      "css": [
+        "styles/neatified/neatified.css"
+      ]
+    }
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "manifest_version": 2
+}
