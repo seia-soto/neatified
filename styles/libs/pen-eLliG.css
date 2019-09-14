@@ -2,15 +2,15 @@
 
 .tgl-header {
   display: inline-block;
-  float: left;
 
-  margin-top: 0;
+  margin-left: 5px;
+  margin-top: .3em;
 
   line-height: 100%;
 }
 .tgl-item {
   display: inline-block;
-  float: right;
+  float: left;
 }
 
 /* by @Seia-Soto /// END /// */
