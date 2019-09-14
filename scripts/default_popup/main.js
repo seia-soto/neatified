@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
           document.querySelector('#neatified-LocalToggle').disabled = true
           document.querySelector('#neatified-LocalToggle').checked = false
         } else {
+          document.querySelector('#neatified-LocalToggle').disabled = false
           document.querySelector('#neatified-LocalToggle').checked = !result.sitesDisabled.indexOf(hostname) > -1
         }
 
