@@ -38,11 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
             for (let j = 0; j < options.attributes.length; j++) {
               const attrName = options.attributes[j]
 
-              options.attributes.forEach(function (attrName) {
-                if (element.nodeType != 3 /* If Node is not [object Text] (Text node) */) {
-                  element.removeAttribute(attrName)
-                }
-              })
+              if (element.nodeType != 3 /* If Node is not [object Text] (Text node) */) {
+                element.removeAttribute(attrName)
+              }
             }
           }
         }
