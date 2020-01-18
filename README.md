@@ -2,6 +2,8 @@
 
 Neatified는 복사 및 우클릭, 드래그를 방지하는 기능을 차단하는 웹 브라우저 플러그인입니다.
 
+- v1.1.0 버전부터 더 이상 `.crx` 파일이 제공되지 않으며 오직 `.zip` 아카이브만 제공됩니다. (`.crx`는 실제 설치에 관여하지 않음)
+
 [![](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/images/0)](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/links/0)[![](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/images/1)](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/links/1)[![](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/images/2)](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/links/2)[![](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/images/3)](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/links/3)[![](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/images/4)](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/links/4)[![](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/images/5)](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/links/5)[![](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/images/6)](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/links/6)[![](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/images/7)](https://sourcerer.io/fame/Seia-Soto/Seia-Soto/neatified/links/7)
 
 ## 목차

@@ -11,30 +11,41 @@ document.addEventListener('DOMContentLoaded', function () {
           'copy',
           'dragstart',
           'contextmenu',
-          'selectstart'
+          'selectstart',
+          'selectionchange',
+          'mouseup',
+          'mousedown'
         ],
         attributes: [
           'oncontextmenu'
         ]
       }
 
-      function neatified(options, elements) {
+      async function neatified(options, elements) {
         elements = elements || Array.from(document.querySelectorAll('*'))
 
-        elements.forEach(function (element) {
+        for (let i = 0; i < elements.length; i++) {
+          const element = elements[i]
+
           if (typeof element === 'object' && element !== null) {
-            options.events.forEach(function (eventName) {
+            for (let k = 0; k < options.events.length; k++) {
+              const eventName = options.events[k]
+
               element.addEventListener(eventName, function (event) {
                 event.stopPropagation()
               }, true)
-            })
-            options.attributes.forEach(function (attrName) {
-              if (element.nodeType != 3 /* If Node is not [object Text] (Text node) */) {
-                element.removeAttribute(attrName)
-              }
-            })
+            }
+            for (let j = 0; j < options.attributes.length; j++) {
+              const attrName = options.attributes[j]
+
+              options.attributes.forEach(function (attrName) {
+                if (element.nodeType != 3 /* If Node is not [object Text] (Text node) */) {
+                  element.removeAttribute(attrName)
+                }
+              })
+            }
           }
-        })
+        }
       }
       neatified(preventions)
 
