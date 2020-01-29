@@ -1,3 +1,13 @@
-.neatified__content {
-  padding-top: 40px;
+html {
+  width: 320px;
+  height: 500px;
+}
+
+body {
+  background: #1b1c1d;
+}
+
+.neatified__header {
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
