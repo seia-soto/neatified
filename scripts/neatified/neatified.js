@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
       preferences.level = 1
     }
 
-    function neatified() {
+    function neatified(profile) {
       async function neatify(options, elements) {
         elements = elements || Array.from(document.querySelectorAll('*'))
 
@@ -97,12 +97,12 @@ document.addEventListener('DOMContentLoaded', function () {
         })
       }
 
-      neatify(profiles[preferences.level])
+      neatify(profile)
 
-      if (useStyle) reformStyle()
-      if (useObserver) observeElements()
+      if (profile.useStyle) reformStyle()
+      if (profile.useObserver) observeElements()
     }
 
-    neatified()
+    neatified(profiles[preferences.level])
   })
 })
