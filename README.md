@@ -14,6 +14,12 @@ Neatified는 복사 및 우클릭, 드래그를 방지하는 기능을 차단하
 
 ### 설치하기
 
+#### Firefox
+
+* [Firefox addons에서 Neatified 부가기능을 설치](https://addons.mozilla.org/addon/neatified/)할 수 있습니다.
+
+#### Chrome
+
 이 플러그인은 Chrome 웹 스토어에서 사용가능하지 않으므로 압축해제된 플러그인 소스를 사용하여 설치해야 합니다.
 
 1. [릴리즈 폴더](/dist)에서 최신 버전(Zip 아카이브)을 다운로드하세요.
