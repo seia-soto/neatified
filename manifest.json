@@ -1,11 +1,11 @@
 {
   "name": "Neatified",
-  "version": "1.1.1",
-  "description": "Blocking scripts which blocking copying context.",
+  "version": "1.2.0",
+  "description": "Unblock copying and right-clicking on most of the sites.",
   "homepage_url": "https://seia.io/",
   "offline_enabled": true,
   "permissions": [
-    "http://*/*", "https://*/*", "storage", "tabs"
+    "http://*/*", "https://*/*", "storage"
   ],
   "browser_action": {
     "default_title": "Neatified",
@@ -22,11 +22,6 @@
     "32": "images/default_icon/32.png",
     "48": "images/default_icon/48.png",
     "128": "images/default_icon/128.png"
-  },
-  "background": {
-    "scripts": [
-      "scripts/background/api.js"
-    ]
   },
   "content_scripts": [
     {

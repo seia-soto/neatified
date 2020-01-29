@@ -1,27 +1,53 @@
+const profiles = [
+  // NOTE: Disabled
+  {
+    events: [],
+    attributes: [],
+    useStyle: false,
+    useObserver: false
+  },
+  // NOTE: (Recommendation) Balanced
+  {
+    events: [
+      'copy',
+      'dragstart',
+      'contextmenu',
+      'selectstart'
+    ],
+    attributes: [
+      'oncontextmenu'
+    ],
+    useStyle: true,
+    useObserver: true
+  },
+  // NOTE: Strict
+  {
+    events: [
+      'copy',
+      'dragstart',
+      'contextmenu',
+      'selectstart',
+      'selectionchange',
+      'mouseup',
+      'mousedown'
+    ],
+    attributes: [
+      'oncontextmenu'
+    ],
+    useStyle: true,
+    useObserver: true
+  }
+]
+
 document.addEventListener('DOMContentLoaded', function () {
-  chrome.runtime.onMessage.addListener(function (response) {
-    response = response['neatified.background.api'].response
+  chrome.storage.local.get(['level'], function (preferences) {
+    if (typeof preferences.level === 'undefined' || preferences.level === null) {
+      // NOTE: Because when the config set 'nothing', javascript will always use 1 if I use `preferences.level = preferences.level || 1` instead.
+      preferences.level = 1
+    }
 
-    const hostname = new URL(response.tab.url).hostname
-    const result = response.storage
-
-    if (!result.neatifiedDisabled && result.sitesDisabled.indexOf(hostname) < 0) {
-      const preventions = {
-        events: [
-          'copy',
-          'dragstart',
-          'contextmenu',
-          'selectstart',
-          'selectionchange',
-          'mouseup',
-          'mousedown'
-        ],
-        attributes: [
-          'oncontextmenu'
-        ]
-      }
-
-      async function neatified(options, elements) {
+    function neatified() {
+      async function neatify(options, elements) {
         elements = elements || Array.from(document.querySelectorAll('*'))
 
         for (let i = 0; i < elements.length; i++) {
@@ -45,34 +71,38 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         }
       }
-      neatified(preventions)
+      function reformStyle() {
+        const styleCtx = `
+          *, *::after, *::before {
+            -webkit-user-select: auto !important;
+            -webkit-user-drag: auto !important;
+            -webkit-app-region: auto !important;
+          }
+        `
+        const style = document.createElement('style')
 
-      // NOTE: Insert stylesheet.
-      const styleCtx = `
-        *, *::after, *::before {
-        	-webkit-user-select: auto !important;
-        	-webkit-user-drag: auto !important;
-        	-webkit-app-region: auto !important;
-        }
-      `
-      const style = document.createElement('style')
+        style.innerHTML = styleCtx
 
-      style.innerHTML = styleCtx
+        document.querySelector('head').appendChild(style)
+      }
+      function observeElements() {
+        const observer = new MutationObserver(async function (mutationList, observer) {
+          const nodeAdded = []
 
-      document.querySelector('head').appendChild(style)
+          for (let k = 0; k < mutationList.length; k++) {
+            await nodeAdded.push(...mutationList[k].addedNodes)
+          }
 
-      // NOTE: Neatify every DOM element created.
-      const observer = new MutationObserver(function (mutationList, observer) {
-        const nodeAdded = []
-
-        mutationList.forEach(function (mutation) {
-          nodeAdded.push(...mutation.addedNodes)
+          neatify(profile, Array.from(nodeAdded))
         })
+      }
 
-        neatified(preventions, Array.from(nodeAdded))
-      })
-      observer.observe(document.querySelector('html'), { childList: true, subtree: true })
+      neatify(profiles[preferences.level])
+
+      if (useStyle) reformStyle()
+      if (useObserver) observeElements()
     }
+
+    neatified()
   })
-  chrome.runtime.sendMessage({ 'neatified.background.api': { action: 'neatified-siteFilter' } })
 })

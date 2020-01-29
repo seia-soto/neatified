@@ -6,51 +6,57 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="../styles/libs/normalize.css">
-    <link rel="stylesheet" href="../styles/libs/pen-eLliG.css">
+    <link rel="stylesheet" href="../styles/libs/semantic.min.css">
     <link rel="stylesheet" href="../styles/default_popup/main.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-
-    <script src="../scripts/default_popup/main.js" charset="utf-8"></script>
   </head>
   <body>
-    <header>
-      <img class="logo" src="../images/default_icon/148.png" alt="Neatified">
-      <h2 class="branding">Neatified</h2>
-    </header>
+    <div class="ui top fixed inverted menu neatified__header">
+      <div class="active teal item">
+        Neatified
+      </div>
+    </div>
+    <div class="neatified__content">
+      <div class="ui basic segment">
+        <h2>Settings</h2>
+        <div class="ui basic segment">
+          <h3>Unblocking mode</h3>
+          <div class="ui inverted compact menu">
+            <a id="ButtonSetLevel0" class="grey item">
+              Nothing
+            </a>
+            <a id="ButtonSetLevel1" class="teal item">
+              Balanced
+            </a>
+            <a id="ButtonSetLevel2" class="yellow item">
+              Strict
+            </a>
+          </div>
 
-    <article>
-      <h2>설정</h2>
-      <div class="tgl-item">
-        <input class="tgl tgl-light" id="neatified-LocalToggle" type="checkbox">
-        <label class="tgl-btn" for="neatified-LocalToggle"></label>
+          <h4>Nothing</h4>
+          <p>
+            Neatified will do nothing when a new website loaded.
+          </p>
+
+          <h4>Balanced</h4>
+          <p>
+            Remove copy or right-click restriction from most of the sites.
+          </p>
+
+          <h4>Strict</h4>
+          <p>
+            Remove copy or right-click restriction from almost of the sites. (The site may not work correctly.)
+          </p>
+        </div>
+
+        <p>
+          Copyright 2019-2020 <a href="https://seia.io" target="_blank">Seia-Soto</a>.
+          All rights reserved.
+        </p>
       </div>
-      <p class="tgl-header">이 사이트에서 Neatified 사용</p>
-      <div class="tgl-item">
-        <input class="tgl tgl-light" id="neatified-GlobalToggle" type="checkbox">
-        <label class="tgl-btn" for="neatified-GlobalToggle"></label>
-      </div>
-      <p class="tgl-header">모든 사이트에서 Neatified 사용</p>
-    </article>
-    <article>
-      <br>
-      <h2>Neatified는 무엇인가요?</h2>
-      <p>Neatified는 복사 및 우클릭, 드래그를 방지하는 기능을 차단하는 웹 브라우저 플러그인입니다.</p>
-    </article>
-    <article>
-      <h2>개발자에게 문의하기</h2>
-      <p>
-        <a href="mailto:seia@outlook.kr" target="_blank">이메일</a> 또는 <a href="https://twitter.com/Seia_Soto" target="_blank">트위터</a>에서 개발자(Seia-Soto)에게 문의를 남길 수 있습니다.
-        또한 이 플러그인은 오픈소스 프로젝트입니다. <a href="https://github.com/Seia-Soto/neatified" target="_blank">GitHub에서 확인</a>해보세요.<br>
-        <h3>추가 연락처 및 링크</h3>
-        <ul>
-          <li><a href="https://discordapp.com/invite/vAEBXWY" target="_blank">Discord</a></li>
-          <li><a href="https://seia.io" target="_blank">웹 사이트</a></li>
-          <li><a href="https://b2.seia.io" target="_blank">블로그</a></li>
-          <li><a href="https://b2.seia.io/privacy-policy" target="_blank">개인정보 보호 정책</a></li>
-        </ul>
-      </p>
-    </article>
+    </div>
+
+    <script src="../scripts/libs/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <script src="../scripts/libs/semantic.min.js" charset="utf-8"></script>
+    <script src="../scripts/default_popup/main.js" charset="utf-8"></script>
   </body>
 </html>

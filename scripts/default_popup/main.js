@@ -1,63 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function (tabs) {
-    const tab = tabs[0]
-    const url = new URL(tab.url)
-    const hostname = url.hostname
+  const buttons = {
+    setLevel: [
+      document.querySelector('#ButtonSetLevel0'),
+      document.querySelector('#ButtonSetLevel1'),
+      document.querySelector('#ButtonSetLevel2')
+    ]
+  }
 
-    chrome.storage.local.get(['sitesDisabled', 'neatifiedDisabled'], function (result) {
-      result.sitesDisabled = result.sitesDisabled || []
+  chrome.storage.local.get(['level'], function (preferences) {
+    if (typeof preferences.level === 'undefined' || preferences.level === null) {
+      // NOTE: Because when the config set 'nothing', javascript will always use 1 if I use `preferences.level = preferences.level || 1` instead.
+      preferences.level = 1
+    }
 
-      chrome.storage.local.set({
-        sitesDisabled: result.sitesDisabled,
-        neatifiedDisabled: result.neatifiedDisabled
-      })
-
-      document.querySelector('#neatified-LocalToggle').checked = true
-      document.querySelector('#neatified-GlobalToggle').checked = true
-
-      if (result.sitesDisabled.indexOf(hostname) > -1) {
-        document.querySelector('#neatified-LocalToggle').checked = false
-      }
-      if (result.neatifiedDisabled) {
-        document.querySelector('#neatified-LocalToggle').disabled = true
-        document.querySelector('#neatified-LocalToggle').checked = false
-
-        document.querySelector('#neatified-GlobalToggle').checked = false
-      }
-
-      document.querySelector('#neatified-LocalToggle').addEventListener('click', function () {
-        if (result.sitesDisabled.indexOf(hostname) == -1) {
-          result.sitesDisabled.push(hostname)
-        } else {
-          result.sitesDisabled.splice(result.sitesDisabled.indexOf(hostname), 1)
+    for (let i = 0; i < buttons.setLevel.length; i++) {
+      buttons.setLevel[i].addEventListener('click', function () {
+        for (let k = 0; k < buttons.setLevel.length; k++) {
+          buttons.setLevel[k].classList.remove('active')
         }
+        buttons.setLevel[i].classList.add('active')
 
-        chrome.storage.local.set({
-          sitesDisabled: result.sitesDisabled,
-          neatifiedDisabled: result.neatifiedDisabled
-        })
-        chrome.tabs.update(tabs[0].id, { url: tabs[0].url })
+        chrome.storage.local.set({ level: i })
       })
-      document.querySelector('#neatified-GlobalToggle').addEventListener('click', function () {
-        result.neatifiedDisabled = !result.neatifiedDisabled
+    }
 
-        if (result.neatifiedDisabled) {
-          document.querySelector('#neatified-LocalToggle').disabled = true
-          document.querySelector('#neatified-LocalToggle').checked = false
-        } else {
-          document.querySelector('#neatified-LocalToggle').disabled = false
-          document.querySelector('#neatified-LocalToggle').checked = !result.sitesDisabled.indexOf(hostname) > -1
-        }
-
-        chrome.storage.local.set({
-          sitesDisabled: result.sitesDisabled,
-          neatifiedDisabled: result.neatifiedDisabled
-        })
-        chrome.tabs.update(tabs[0].id, { url: tabs[0].url })
-      })
-    })
+    buttons.setLevel[preferences.level].classList.add('active')
+    chrome.storage.local.set({ level: preferences.level })
   })
 })
