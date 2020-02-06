@@ -86,14 +86,25 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('head').appendChild(style)
       }
       function observeElements() {
-        const observer = new MutationObserver(async function (mutationList, observer) {
+        const observer = new MutationObserver(async function (mutationList) {
           const nodeAdded = []
 
           for (let k = 0; k < mutationList.length; k++) {
             await nodeAdded.push(...mutationList[k].addedNodes)
+
+            if (mutationList[k].type === 'attributes') { // NOTE: attributes already filtered.
+              await nodeAdded.push(mutationList[k].target)
+            }
           }
 
           neatify(profile, Array.from(nodeAdded))
+        })
+
+        observer.observe(document.body, {
+          attributes: true,
+          childList: true,
+          subtree: true,
+          attributeFilter: profile.attributes
         })
       }
 
