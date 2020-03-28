@@ -44,6 +44,20 @@ Safari용 Neatified는 Helloyunho님이 포크하여 만들어주셨습니다. �
 
 - [Helloyunho/neatified](https://github.com/Helloyunho/neatified)
 
+#### Microsoft Edge (EdgeHTML)
+
+> `1.3.2` 버전부터 EdgeHTML에 대한 지원이 추가되었습니다. 단, EdgeHTML은 Windows에 기본적으로 설치되어 있는 구 버전입니다.
+
+1. [릴리즈 폴더](https://github.com/Seia-Soto/neatified/releases)에서 최신 버전(Zip 아카이브)을 다운로드하세요.
+
+2. 다운로드한 Zip 아카이브를 압축해제하고 Edge 기능 관리 페이지(about:flags)를 여세요.
+
+3. 기능 관리 페이지에서 `확장 개발자 기능 사용`을 활성화하고 Edge를 재시작하세요.
+
+4. 우측 상단의 메뉴 버튼을 눌러 `확장` 메뉴로 진입하고 압축해제한 Zip 아카이브 폴더(manifest.json 파일이 위치해 있음)을 선택하고 설치를 완료하세요.
+
+5. 우측 상단에 Neatified가 설치된 것을 확인할 수 있습니다.
+
 ### 도움말
 
 플러그인 실행 중 문제(특정 사이트에서 플러그인이 작동하지 않는 경우 등)가 발생한다면 [이슈 탭](https://github.com/Seia-Soto/neatified/issues)에서 **같은 상황을 만들 수 있는 방법** 그리고 **현재 운영체제 및 웹 브라우저 버전 등의 정보** 등을 꼭 첨부하여 신고해주시기 바랍니다.
