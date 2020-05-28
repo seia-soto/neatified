@@ -14,13 +14,20 @@ Neatified는 복사 및 우클릭, 드래그를 방지하는 기능을 차단하
 
 ### 설치하기
 
+각 웹 스토어 버전은 GitHub의 버전보다 레거시 버전이거나 정상적으로 동작하지 않을 수도 있습니다.
+마지막 업데이트가 적용된 버전을 설치하려면 GitHub 소스에서 설치하세요.
+
 #### Firefox
 
 * [Firefox addons에서 Neatified 부가기능을 설치](https://addons.mozilla.org/addon/neatified/)할 수 있습니다.
 
+> Neatified는 Chrome에서 동작하도록 설계되었으며 일부 기능이 정상적으로 동작하지 않을 수도 있습니다.
+
 #### Chrome
 
-이 플러그인은 Chrome 웹 스토어에서 사용가능하지 않으므로 압축해제된 플러그인 소스를 사용하여 설치해야 합니다.
+* [Chrome Web Store에서 Neatified 확장 프로그램을 설치](https://chrome.google.com/webstore/detail/neatified/cpchjdflfeejpegfmghbamllgdpikgaa)할 수 있습니다.
+
+> 마지막 릴리즈를 빠르게 사용하려면 아래 방법을 통해 직접 소스에서 설치할 수 있습니다.
 
 1. [릴리즈 폴더](https://github.com/Seia-Soto/neatified/releases)에서 최신 버전(Zip 아카이브)을 다운로드하세요.
 
@@ -70,12 +77,11 @@ Neatified를 우측 상단의 확장프로그램 아이콘을 사용해서 설�
 
 아니요. 동기화되지 않습니다. Chrome 확장프로그램 스토리지 기능에는 `sync`와 `local`, 총 2개의 옵션이 있습니다.
 각각 동기화를 사용하는지 또는 현재 기기에서만 설정을 유지할 지에 차이가 있습니다.
-하지만 현재 Neatified는 소스로부터 설치되므로 설치 시 무작위의 애플리케이션 ID가 주어집니다.
-그렇기 때문에 `sync`를 사용하여도 실제로 동기화를 구현할 수는 없습니다. 추후 웹 스토어에서 사용가능하게 된다면 동기화를 사용할 예정입니다.
+Neatified는 기본적으로 소스로부터 설치되는 환경을 가정하기 때문에 `local`을 사용하여 설정을 업데이트합니다.
 
 3. 확장프로그램은 어떻게 업데이트해야 하나요? 자동으로 업데이트되나요?
 
-확장 프로그램은 자동으로 업데이트되지 않습니다. 확장 프로그램을 새 버전으로 다운로드한 뒤, 다시 설치해주시면 됩니다.
+웹스토어 혹은 애드온 마켓에서 설치하지 않은 확장 프로그램은 자동으로 업데이트되지 않습니다. 확장 프로그램을 새 버전으로 다운로드한 뒤, 다시 설치해주시면 됩니다.
 
 ### 문의
 
@@ -83,5 +89,4 @@ Neatified를 우측 상단의 확장프로그램 아이콘을 사용해서 설�
 
 - [Discord](https://discordapp.com/invite/vAEBXWY)
 - [웹사이트](https://seia.io)
-- [블로그](https://b2.seia.io)
-- [개인정보 보호 정책](https://b2.seia.io/privacy-policy)
+- [블로그](https://typed.sh)
