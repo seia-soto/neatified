@@ -1,14 +1,20 @@
 {
+  "manifest_version": 3,
   "name": "Neatified",
   "author": "Seia-Soto",
-  "version": "1.3.2",
-  "description": "Unblock copying and right-clicking on most of the sites.",
+  "version": "1.4.0",
+  "description": "Allowing you to copy and right-click on websites.",
   "homepage_url": "https://seia.io/",
   "offline_enabled": true,
   "permissions": [
-    "http://*/*", "https://*/*", "storage"
+    "tabs",
+    "storage"
   ],
-  "browser_action": {
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "action": {
     "default_title": "Neatified",
     "default_popup": "pages/default_popup.html",
     "default_icon": {
@@ -26,19 +32,21 @@
   },
   "content_scripts": [
     {
-      "run_at": "document_start",
+      "run_at": "document_end",
       "matches": [
         "http://*/*",
         "https://*/*"
       ],
       "js": [
         "scripts/libs/webextensions-polyfill.js",
+        "scripts/shared_utils.js",
         "scripts/neatified/neatified.js"
       ]
     }
   ],
-  "content_security_policy": "script-src 'self'; object-src 'self'",
-  "manifest_version": 2,
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
   "-ms-preload": {
     "backgroundScript": "scripts/backgroundScriptsAPIBridge.js",
     "contentScript": "scripts/contentScriptsAPIBridge.js"

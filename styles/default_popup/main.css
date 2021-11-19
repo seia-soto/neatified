@@ -1,13 +1,121 @@
 html {
-  width: 320px;
-  height: 500px;
+  min-width: 320px;
+  height: 100%;
 }
 
 body {
+  color: lightgray;
   background: #1b1c1d;
+
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+
+  line-break: 1.6em;
+  word-break: keep-all;
 }
 
-.neatified__header {
-  padding-top: 20px;
-  padding-bottom: 40px;
+h1, h2, h3, h4, h5, h6, p, a, span {
+  padding: 0;
+  margin: 0;
+}
+
+ol, ul {
+  padding-left: 20px;
+}
+
+a {
+  color: lightsteelblue;
+  text-decoration: none;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 56px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 400;
+}
+
+nav > h1 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+div.pusher {
+  margin-top: 56px;
+}
+
+div.divider {
+  height: 1px;
+  padding: 0;
+
+  background-color: darkgray;
+}
+
+.container {
+  padding: 16px;
+  padding-bottom: 0;
+}
+
+.container:last-child {
+  padding-bottom: 16px;
+}
+
+.container > h2 {
+  font-size: 16px;
+  font-weight: 500;
+
+  padding-bottom: 12px;
+}
+
+div.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  list-style: none;
+}
+
+button {
+  width: 100%;
+  padding: 5px 14px;
+  margin: 14px 0;
+
+  text-align: center;
+
+  background-color: lightslategray;
+  color: black;
+
+  border: none;
+  border-radius: 5px;
+
+  transition: background-color 0.2s ease;
+
+  cursor: pointer;
+}
+
+button.active {
+  background-color: lightsteelblue;
+}
+
+div.buttons > button {
+  flex: 1;
+
+  border-radius: 0;
+}
+
+div.buttons > button:first-child {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+div.buttons > button:last-child {
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
 }

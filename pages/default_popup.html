@@ -1,59 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Neatified</title>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neatified</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../styles/libs/normalize.css">
+  <link rel="stylesheet" href="../styles/default_popup/main.css">
 
-    <link rel="stylesheet" href="../styles/libs/semantic.min.css">
-    <link rel="stylesheet" href="../styles/default_popup/main.css">
-  </head>
-  <body>
-    <div class="ui inverted center aligned basic segment">
-      <div class="neatified__header">
-        <h1>Neatified</h1>
-        <p>
-          <a href="https://github.com/Seia-Soto/neatified">v1.3.1</a>
-        </p>
-      </div>
+  <script src="../scripts/libs/webextensions-polyfill.js"></script>
+  <script src="../scripts/shared_utils.js"></script>
+  <script async src="../scripts/default_popup/main.js"></script>
+</head>
+<body>
+  <nav>
+    <h1>Neatified</h1>
+  </nav>
+  <div class="pusher divider" />
 
-      <div class="ui inverted small compact menu">
-        <a id="ButtonSetLevel0" class="grey item">
-          Nothing
-        </a>
-        <a id="ButtonSetLevel1" class="teal item">
-          Balanced
-        </a>
-        <a id="ButtonSetLevel2" class="yellow item">
-          Strict
-        </a>
-      </div>
+  <div class="container">
+    <h2>사이트 옵션</h2>
+    <p>현재 웹 사이트에서 Neatified를 활성화할지 결정합니다.</p>
 
-      <h4>Nothing</h4>
-      <p>
-        Neatified will do nothing when a new website loaded.
-      </p>
-
-      <h4>Balanced</h4>
-      <p>
-        Remove copy or right-click restriction from most of the sites.
-      </p>
-
-      <h4>Strict</h4>
-      <p>
-        Remove copy or right-click restriction from almost of the sites. (The site may not work correctly.)
-      </p>
+    <div class="buttons">
+      <button data-action-mode="disable">끄기</button>
+      <button data-action-mode="enable_soft">약하게</button>
+      <button data-action-mode="enable_strict">강하게</button>
     </div>
-    <div class="ui inverted basic segment">
-      <p>
-        Copyright 2019-2020 <a href="https://seia.io" target="_blank">Seia-Soto</a> and <a href="https://github.com/Helloyunho" target="_blank">Helloyunho</a>.
-        All rights reserved.
-      </p>
-    </div>
+  </div>
 
-    <script src="../scripts/libs/jquery-3.1.1.min.js" charset="utf-8"></script>
-    <script src="../scripts/libs/semantic.min.js" charset="utf-8"></script>
-    <script src="../scripts/default_popup/main.js" charset="utf-8"></script>
-  </body>
+  <div class="container">
+    <h2>도구</h2>
+    <p>
+      확장 프로그램이 정상적으로 동작하지 않거나 너무 많은 규칙으로 웹 브라우징 속도가 저하되면 사용해주세요.
+    </p>
+
+    <button class="active" data-util-action="reset">설정 초기화</button>
+  </div>
+
+  <div class="container">
+    <h2>문의</h2>
+    <p>
+      플러그인과 관련한 사용 문의는 <a href="https://github.com/seia-soto/neatified" target="_blank">GitHub</a>에서 할 수 있습니다.
+      오류가 발생하는 경우에는 반드시 다음 사항을 미리 확인해주세요.
+      더욱 신속한 오류 수정에 도움이 됩니다.
+      <ul>
+        <li>방문하신 웹 사이트의 전체 주소</li>
+        <li>운영체제와 웹 브라우저 정보와 버전</li>
+      </ul>
+    </p>
+  </div>
+</body>
 </html>

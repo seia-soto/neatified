@@ -1,13 +1,11 @@
-const profiles = [
-  // NOTE: Disabled
-  {
+const profiles = {
+  disable: {
     events: [],
     attributes: [],
-    useStyle: false,
+    useStyler: false,
     useObserver: false
   },
-  // NOTE: (Recommendation) Balanced
-  {
+  enable_soft: {
     events: [
       'copy',
       'dragstart',
@@ -17,11 +15,10 @@ const profiles = [
     attributes: [
       'oncontextmenu'
     ],
-    useStyle: true,
+    useStyler: true,
     useObserver: true
   },
-  // NOTE: Strict
-  {
+  enable_strict: {
     events: [
       'copy',
       'dragstart',
@@ -29,91 +26,92 @@ const profiles = [
       'selectstart',
       'selectionchange',
       'mouseup',
-      'mousedown'
+      'mousedown',
+      'keydown',
+      'keyup',
+      'keypress'
     ],
     attributes: [
       'oncontextmenu'
     ],
-    useStyle: true,
+    useStyler: true,
     useObserver: true
   }
-]
+}
 
-document.addEventListener('DOMContentLoaded', function () {
-  chrome.storage.local.get(['level'], function (preferences) {
-    if (typeof preferences.level === 'undefined' || preferences.level === null) {
-      // NOTE: Because when the config set 'nothing', javascript will always use 1 if I use `preferences.level = preferences.level || 1` instead.
-      preferences.level = 1
-    }
+const neatified = (options, elements) => {
+  elements = elements || Array.from(document.querySelectorAll('body > *'))
 
-    function neatified(profile) {
-      async function neatify(options, elements) {
-        elements = elements || Array.from(document.querySelectorAll('*'))
+  for (let i = 0; i < elements.length; i++) {
+    const element = elements[i]
 
-        for (let i = 0; i < elements.length; i++) {
-          const element = elements[i]
+    if (typeof element === 'object' && element !== null) {
+      for (let k = 0; k < options.events.length; k++) {
+        const eventName = options.events[k]
 
-          if (typeof element === 'object' && element !== null) {
-            for (let k = 0; k < options.events.length; k++) {
-              const eventName = options.events[k]
+        element.addEventListener(eventName, function (event) {
+          event.stopPropagation()
+        }, true)
+      }
+      for (let j = 0; j < options.attributes.length; j++) {
+        const attrName = options.attributes[j]
 
-              element.addEventListener(eventName, function (event) {
-                event.stopPropagation()
-              }, true)
-            }
-            for (let j = 0; j < options.attributes.length; j++) {
-              const attrName = options.attributes[j]
-
-              if (element.nodeType != 3 /* If Node is not [object Text] (Text node) */) {
-                element.removeAttribute(attrName)
-              }
-            }
-          }
+        if (element.nodeType != 3 /* If Node is not [object Text] (Text node) */) {
+          element.removeAttribute(attrName)
         }
       }
-      function reformStyle() {
-        const styleCtx = `
-          *, *::after, *::before {
-            -webkit-user-select: auto !important;
-            -webkit-user-drag: auto !important;
-            -webkit-app-region: auto !important;
-          }
-        `
-        const style = document.createElement('style')
+    }
+  }
+}
 
-        style.innerHTML = styleCtx
+const neatified_styler = () => {
+  const styleCtx = `
+    html, body, *, *::after, *::before {
+      cursor: auto !important;
+      user-select: auto !important;
+      -webkit-user-select: auto !important;
+      -webkit-user-drag: auto !important;
+      -webkit-app-region: auto !important;
+    }
+  `
+  const style = document.createElement('style')
 
-        document.querySelector('head').appendChild(style)
+  style.innerHTML = styleCtx
+
+  document.querySelector('head').appendChild(style)
+}
+
+const neatified_observer = profile => {
+  const observer = new MutationObserver(function (mutationList) {
+    const nodeAdded = []
+
+    for (let k = 0; k < mutationList.length; k++) {
+      nodeAdded.push(...mutationList[k].addedNodes)
+
+      if (mutationList[k].type === 'attributes') { // NOTE: attributes already filtered.
+        nodeAdded.push(mutationList[k].target)
       }
-      function observeElements() {
-        const observer = new MutationObserver(async function (mutationList) {
-          const nodeAdded = []
-
-          for (let k = 0; k < mutationList.length; k++) {
-            await nodeAdded.push(...mutationList[k].addedNodes)
-
-            if (mutationList[k].type === 'attributes') { // NOTE: attributes already filtered.
-              await nodeAdded.push(mutationList[k].target)
-            }
-          }
-
-          neatify(profile, Array.from(nodeAdded))
-        })
-
-        observer.observe(document.body, {
-          attributes: true,
-          childList: true,
-          subtree: true,
-          attributeFilter: profile.attributes
-        })
-      }
-
-      neatify(profile)
-
-      if (profile.useStyle) reformStyle()
-      if (profile.useObserver) observeElements()
     }
 
-    neatified(profiles[preferences.level])
+    neatified(profile, Array.from(nodeAdded))
   })
-})
+
+  observer.observe(document.body, {
+    attributes: true,
+    childList: true,
+    subtree: true,
+    attributeFilter: profile.attributes
+  })
+}
+
+const neatified_init = async () => {
+  const action = await get_action((new URL(location.href)).hostname)
+  const profile = profiles[action]
+
+  neatified(profile)
+
+  if (profile.useStyler) neatified_styler()
+  if (profile.useObserver) neatified_observer(profile)
+}
+
+neatified_init()
