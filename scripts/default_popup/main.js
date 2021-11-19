@@ -47,13 +47,13 @@ const ui_reset_config = async () => {
   const el = document.querySelector(reset_button)
 
   el.classList.remove('active')
-  el.innerHTML = '초기화 중...'
+  el.innerHTML = 'Resetting config...'
   states.reset = 1
 
   await reset_config()
 
   el.classList.add('active')
-  el.innerHTML = '설정 초기화'
+  el.innerHTML = 'Reset config'
   states.reset = 0
 
   // reload current popup

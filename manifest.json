@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Neatified",
   "author": "Seia-Soto",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Allowing you to copy and right-click on websites.",
   "homepage_url": "https://seia.io/",
   "offline_enabled": true,
