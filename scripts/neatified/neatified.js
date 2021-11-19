@@ -67,7 +67,6 @@ const neatified = (options, elements) => {
 const neatified_styler = () => {
   const styleCtx = `
     html, body, *, *::after, *::before {
-      cursor: auto !important;
       user-select: auto !important;
       -webkit-user-select: auto !important;
       -webkit-user-drag: auto !important;
