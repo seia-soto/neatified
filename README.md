@@ -45,6 +45,12 @@ Neatified는 복사 및 우클릭, 드래그를 방지하는 기능을 차단하
 
 5. 우측 상단에 Neatified가 설치된 것을 확인할 수 있습니다.
 
+#### Whale
+
+* [Whale Store에서 Neatified 확장앱을 설치](https://store.whale.naver.com/detail/piakhinfpllpilckgolopicmfjgocghc)할 수 있습니다.
+
+> Whale은 Chromium 기반으로 Neatified의 동작이 호환됩니다.
+
 #### Safari
 
 > 기능 지원이 현재 레포지토리와 상이할 수 있습니다.
