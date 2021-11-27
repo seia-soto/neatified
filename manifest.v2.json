@@ -35,7 +35,7 @@
         "https://*/*"
       ],
       "js": [
-        "node_modules/webextension-polyfill/dist/browser-polyfill.js",
+        "node_modules/webextension-polyfill/dist/browser-polyfill.min.js",
         "scripts/shared_utils.js",
         "scripts/neatified/neatified.js"
       ]
