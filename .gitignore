@@ -1,3 +1,9 @@
 *.pem
 .DS_Store
-dist
+
+/dist
+
+package-lock.json
+.package-lock.json
+
+node_modules/webextension-polyfill/dist/browser-polyfill.js*

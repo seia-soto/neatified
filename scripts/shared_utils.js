@@ -1,4 +1,8 @@
-browser = browser || chrome
+let browser = chrome
+
+if (typeof window !== 'undefined') {
+  browser = window.browser || browser
+}
 
 const actions = [
   'disable',
